@@ -83,3 +83,9 @@ production:
   database: fresh_pages_production
   username: fresh_pages
   password: <%= ENV['FRESH_PAGES_DATABASE_PASSWORD'] %>
+
+development:
+  <<: *default
+  database: fresh_pages_development
+  username: 
+  password:
