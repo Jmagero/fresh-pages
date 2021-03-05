@@ -5,8 +5,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    session[:user_id] = @user.id 
-    redirect_to root_path
+    if @user.save
+      flash[:success] = "Welcome to Fresh pages"
+      redirect_to @user
+    else
+      render new
+    end
   end
 
 
