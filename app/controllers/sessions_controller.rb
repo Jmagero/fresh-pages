@@ -3,24 +3,18 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(name: params[:name])
-    if @user
-      session[:user_id] = @user.id 
-      redirect_to @user
+    user = User.find_by(name: params[:name])
+    if user
+      session[:user_id] = user.id 
+      redirect_to root_path
     else
-      redirect_to '/login'
+      flash.now[:danger] = 'Invalid name'
+      redirect_to 'new'
     end
   end
 
-  def login
-  end
-
-  def welcome
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:name)
+  def destroy
+    session.delete(:user_id)
+    redirect_to root_path
   end
 end

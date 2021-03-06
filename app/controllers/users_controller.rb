@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:show]
   def new
     @user = User.new
   end
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Fresh pages"
       redirect_to @user
     else
-      render new
+      render 'new'
     end
   end
 
