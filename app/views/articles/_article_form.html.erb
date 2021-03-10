@@ -1,0 +1,14 @@
+<%= form_with(model: @article, local:true, html: {class: "d-flex flex-column"})  do |f|%>
+    <%= f.label :title%><br>
+    <%= f.text_field :title, class: 'mb-1 form-control'%><br>
+    <%= f.label :text%><br>
+    <%= f.text_field :text, class: 'mb-1 form-control', size: "1x10"%><br>
+    <%= f.label :image%><br>
+    <%= f.file_field :image, class: 'mb-1 form-control'%><br>
+    <div class = "cat-select-container">
+    <%= f.label "Category " %>
+  </div>
+  <%= check_categories(f, @article, @categories, "Create article")%>
+  <%end%>
+  </dvi>
+</dvi>

@@ -3,11 +3,14 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  get '/logout',  to: 'sessions#destroy'
 
   resources :categories
+  resources :articles, except: [:destroy]  do
+    resources :votes, except: [:destroy]
+  end
 
-  root to: "articles#home"
+  root to: "categories#home"
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
