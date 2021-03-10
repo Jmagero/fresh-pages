@@ -1,30 +1,32 @@
 class ArticlesController < ApplicationController
-    include ApplicationHelper
-    include SessionsHelper
-    before_action :logged_in_user
-
-    def home
-    end
     def new
-        @article = current_user.articles.new
+        @article = Article.new
+        @categories = Category.all
     end
 
     def index
-        @articles = Article.all
+        category = Category.find(params[:format])
+        @articles = category.latest_articles.includes(article_categories: :article)
     end
 
     def create
-        @article = current_user.articles.find_by(article_params)
-        if @article.save
-            flash[:success]="You have create new article"
-            redirect_to @article
-        else
-            render 'new'
-        end
+      user = User.find_user(session[:user_id])
+      @article = user.take.articles.new(article_params)
+      if @article.valid?
+        @article.article_categories.build(category_id: category_params[:id]).save
+        @article.save
+  
+        redirect_to @article, notice: 'Article created!'
+      else
+  
+        redirect_to new_article_path, alert: @article.errors.full_messages.to_s
+      end
     end
 
     def edit
         @article = current_user.articles.find(params[:id])
+        redirect_to @article, notice: "You can't edit this" if restrict_article_access
+        @categories = Category.all
     end
 
     def update
@@ -55,6 +57,10 @@ class ArticlesController < ApplicationController
     private
 
     def article_params
-        params.require(article).permit(:title,:text,:image_data)
+        params.require(:article).permit(:title,:text,:image)
+    end
+
+    def category_params
+        params.require(:category).permit(:id)
     end
 end
