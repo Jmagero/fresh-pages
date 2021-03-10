@@ -7,13 +7,12 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-      flash[:success] = "Welcome to Fresh pages"
+      flash[:success] = 'Welcome to Fresh pages'
       redirect_to root_path
     else
       render 'new'
     end
   end
-
 
   private
 
