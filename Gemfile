@@ -54,5 +54,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'hirb'
-gem 'shrine', '~> 3.3'
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
