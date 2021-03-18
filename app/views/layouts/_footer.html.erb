@@ -1,0 +1,14 @@
+<footer class='lato-font d-flex j-content-between'>
+      <div>
+          <%=link_to(image_tag("logo.png", size: "125x40", alt: "icon"), root_path, class: "nav-links")%>
+      </div>
+      <div>
+        <p>Copyright 2021. All rights reserved</p>
+      </div>
+      <div class="d-flex a-items-center j-content-evenly">
+        <p>Find me in</p> 
+        <%=link_to(content_tag(:i,nil,class: "fab fa-twitter-square social-icon"), "http://twitter.com/jmagero", target: "_blank")%>
+        <%=link_to(content_tag(:i,nil,class: "fab fa-github-square social-icon"), "https://github.com/jmagero", target: "_blank")%>
+        <%=link_to(content_tag(:i,nil,class: "fab fa-linkedin social-icon"), "https://www.linkedin.com/in/jocyline-magero/", target: "_blank")%>   
+      </div>
+    </footer>
