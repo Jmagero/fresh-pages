@@ -1,0 +1,6 @@
+<%= form_with(model: @user, local:true)  do |f|%>
+    <%= render 'shared/error_messages' %>
+    <%= f.label :name%><br>
+    <%= f.text_field :name, placeholder: "Enter your name here..."%><br>
+    <%= f.submit '  Register' %>
+<%end%>
