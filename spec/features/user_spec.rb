@@ -5,7 +5,7 @@ RSpec.feature 'Users', type: :feature do
     it 'creates a new user and logs in' do
       visit new_user_path
       fill_in 'Name', with: 'Gui2'
-      click_on 'Create account'
+      click_on 'Register'
       expect(page).to have_content('Welcome to Fresh pages')
       sleep(3)
       click_on 'LOG IN'
