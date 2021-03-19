@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Users", type: :feature do
+RSpec.feature 'Users', type: :feature do
   describe 'Navigate the webpage' do
     it 'creates a new user and logs in' do
       visit new_user_path

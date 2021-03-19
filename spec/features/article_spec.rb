@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Articles", type: :feature do
+RSpec.feature 'Articles', type: :feature do
   describe 'add a new article' do
     before do
       Category.create(name: 'Movies', priority: 1)
