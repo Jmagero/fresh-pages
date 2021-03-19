@@ -39,6 +39,8 @@
 
 * It allows the users to register and login using only a username.
 
+* The users create categories and give each category a priority
+
 * Then they can start populating the website with articles of their creation.
 
 * The articles need a Title, a content or body, a picture and a corresponding category, selected through a select-box.
@@ -47,7 +49,10 @@
 
 * When a user clicks on a category, all the articles associated are shown.
 
-
+## Screenshots
+![image](https://user-images.githubusercontent.com/52098394/111837179-88a21780-8908-11eb-84ab-e515aac2b17f.png)
+![image](https://user-images.githubusercontent.com/52098394/111837493-0534f600-8909-11eb-8a9c-1e4e962eaccf.png)
+![image](https://user-images.githubusercontent.com/52098394/111837570-25fd4b80-8909-11eb-94a8-d9d7f3b86fd7.png)
 
 
 ## Usage
@@ -89,7 +94,8 @@ That will take you to the main form where you can create a new user. Fill out al
 
 ## Live Demo
 
-[Live Demo](https://sleepy-wildwood-93053.herokuapp.com/)
+[Live Demo](https://freshpages.herokuapp.com/) Hosted on a Heroku free account, it may take a while to load.
+
 
 ### Built With
 * Ruby
