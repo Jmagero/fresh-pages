@@ -28,10 +28,8 @@ module ArticlesHelper
                                             article_path(article),
                                             class: 'article-title chivo-regular'), class: 'd-flex a-items-center')
         article_text = content_tag(:p, article.text.truncate_words(20), class: 'article-summary')
-        bg_style = "background: no-repeat center/cover url('#{if article.image.attached?
-                                                                rails_blob_url(article.image)
-                                                              end}');"
-        article_picture = content_tag(:div, nil, style: bg_style, class: 'article-image')
+        bg_st = "background: no-repeat center/cover url('#{rails_blob_url(article.image) if article.image.attached?}');"
+        article_picture = content_tag(:div, nil, style: bg_st, class: 'article-image')
         article_category = content_tag(:h3, article.categories.take.name, class: 'articles-cat-title')
         article_info = content_tag(:div,
                                    article_category + article_title + article_author + article_text,
