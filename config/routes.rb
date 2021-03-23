@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/logout',  to: 'sessions#destroy'
 
   resources :categories
-  resources :articles, except: [:edit, :destroy]  do
+  resources :articles, except: [:destroy]  do
     resources :votes, except: [:destroy]
   end
 
