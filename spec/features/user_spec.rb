@@ -26,6 +26,5 @@ RSpec.feature 'Users', type: :feature do
       click_on 'Log in'
       expect(page).to have_content('Invalid user')
     end
-
   end
 end
