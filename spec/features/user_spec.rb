@@ -13,5 +13,14 @@ RSpec.feature 'Users', type: :feature do
       click_on 'Log in'
       expect(page).to have_content('WRITE AN ARTICLE')
     end
+
+    it 'does not login user with blank username' do
+      visit login_path
+      fill_in 'Name', with: 'Gui2'
+      click_on 'LOG IN'
+      fill_in 'Name', with: ' '
+      click_on 'Log in'
+      expect(page).to have_content('WRITE AN ARTICLE')
+    end
   end
 end

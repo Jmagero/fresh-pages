@@ -6,6 +6,18 @@ RSpec.describe User, type: :model do
       expect { User.create! }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
+  
+  context 'validations' do
+    it 'is valid with a name' do
+      subject.name = 'Norah'
+      expect(subject).to be_valid
+    end
+    
+     it 'is not valid without name' do
+      subject.name = 
+      expect(subject).to_not be_valid
+     end
+  end
 
   context 'User can create articles' do
     let(:user) { User.create(name: 'Luke') }
