@@ -70,6 +70,4 @@ class ArticlesController < ApplicationController
     user_id = obtain_article.author_id
     true if session[:user_id] != user_id
   end
-
-
 end
