@@ -1,0 +1,12 @@
+<%= form_with(model: @article, local:true, html: {class: "d-flex flex-column"})  do |f|%>
+  <%= f.label :title%>
+  <%= f.text_field :title %>
+  <%= f.label :text%>
+  <%= f.text_field :text,  placeholder: "Write your heart out here...", size: "1x10"%>
+  <%= f.label :image%>
+  <%= f.file_field :image %>
+  <div class = "cat-select-container">
+  <%= f.label "Category " %>
+</div>
+<%= check_categories(f, @article, @categories, "Update article")%>
+<%end%>

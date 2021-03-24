@@ -24,23 +24,21 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = current_user.articles.find(params[:id])
+    @article = obtain_article
     redirect_to @article, notice: "You can't edit this" if restrict_article_access
     @categories = Category.all
   end
 
   def update
-    @article = current_user.articles.find(params[:id])
-    if @article.update_attributes(article_params)
-      flash[:success] = 'Article updated'
-      redirect_to @article
-    else
-      render 'edit'
-    end
+    @article = obtain_article
+    @article.update(article_params)
+    @article.article_categories.update(category_id: category_params[:id])
+
+    redirect_to @article, notice: 'Article Updated!'
   end
 
   def destroy
-    @article = current_user.articles.find(params[:id])
+    @article = obtain_article
     if @article
       @article.destroy
       flash[:success] = 'Article has been deleted'
@@ -51,7 +49,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = obtain_article
   end
 
   private
@@ -63,4 +61,15 @@ class ArticlesController < ApplicationController
   def category_params
     params.require(:category).permit(:id)
   end
+
+  def obtain_article
+    Article.find(params[:id])
+  end
+
+  def restrict_article_access
+    user_id = obtain_article.author_id
+    true if session[:user_id] != user_id
+  end
+
+
 end
