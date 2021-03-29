@@ -18,7 +18,7 @@ module ArticlesHelper
   def show_articles(articles)
     content_tag :div, class: 'articles-container' do
       count = 0
-      articles.collect do |article|
+      articles.includes(:author, { image_attachment: :blob }).each do |article|
         votes_number = content_tag(:span, article.votes_count)
         art_vote = show_vote(article)
         author_name = content_tag(:strong, "by #{article.author.name}", class: 'article-author')
