@@ -84,6 +84,7 @@ After cloning the repo, you should fire up a server. Open a command line termina
 - Clone the repository : `git clone <>`
 - Create the database: `rails db:create`
 - Run migration: rails `db:migrate`
+- Seed the database: `rake db:seed`
 - Then serve, `rails serve` or `rails s`
 
 After that, open your browser and type the following in your address bar: 
